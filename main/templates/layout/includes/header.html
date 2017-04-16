@@ -6,7 +6,7 @@
             <div class="ui logo shape">
                 <div class="sides">
                     <div class="active ui side">
-                        <a href="index.html">
+                        <a href="{% url 'main_index_home' %}">
                             <img class="ui image" src="{% static 'images/logo.png' %}" style="width: 40px;">
                         </a>
                     </div>
@@ -15,13 +15,13 @@
         </div>
         <div class="item">
             <div class="ui secondary pointing menu">
-                <a href="index.html" class="item teal active">
+                <a href="{% url 'main_index_home' %}" class="item teal active">
                     Главная
                 </a>
-                <a class="item purple">
+                <a href="{% url 'main_article_show' %}" class="item purple">
                     О проекте
                 </a>
-                <a class="item pink">
+                <a href="#" class="item pink">
                     Контакты
                 </a>
             </div>
