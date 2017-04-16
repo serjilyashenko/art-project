@@ -1,4 +1,5 @@
-{% load staticfiles %}
+{% load static %}
+{% load custom_tags %}
 
 <!DOCTYPE html>
 <html>
@@ -7,11 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>Искусство</title>
-    <link rel="stylesheet" href="{% static 'semantic.css' %}">
-    <link rel="stylesheet" href="{% static 'main.css' %}">
-    <script src="{% static 'jquery.min.js' %}"></script>
-    <script src="{% static 'knockout-latest.js' %}"></script>
-    <script src="{% static 'semantic.js' %}"></script>
+    <link rel="stylesheet" href="{% static_build 'app.css' %}">
+    <script src="{% static_build 'app.js' %}"></script>
 </head>
 <body>
 

@@ -1,2 +1,6 @@
 .idea
 *.pyc
+node_modules
+static_source/semantic
+#static/build
+#assets.json
