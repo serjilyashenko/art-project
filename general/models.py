@@ -1,3 +1,10 @@
 from django.db import models
 
-# Create your models here.
+
+class AppModel(models.Model):
+
+    class Meta:
+        abstract = True
+
+    def save(self):
+        return True
