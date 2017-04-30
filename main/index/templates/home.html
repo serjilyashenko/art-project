@@ -4,17 +4,25 @@
 <div class="ui container">
     <div class="ui five column doubling cards">
 
-        {% for section in sections_list %}
+        {% for section in sections %}
             <div class="card">
                 <a href="{% url 'main_article_show' 1 %}" class="image">
                     <img src="{{ section.photo }}">
                 </a>
                 <div class="content">
-                    <a href="{% url 'main_article_show' 1 %}" class="header" style="font-size: 1.07142857rem;">
-                        {{ section.title }}
-                    </a>
+                    <div class="header" style="font-size: 1.07142857rem;">
+                        {% if section.articles.all.0 %}
+                            <a href="{% url 'main_article_show' section.articles.all.0.id %}">
+                                {{ section.title }}
+                            </a>
+                        {% else %}
+                            <span>
+                                {{ section.title }}
+                            </span>
+                        {% endif %}
+                    </div>
                     <div class="meta">
-                        {{ section.created_at|date:"d E Y" }}
+                        {{ section.children_count }} подразделов
                     </div>
                 </div>
             </div>
