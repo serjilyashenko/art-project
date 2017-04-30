@@ -2,153 +2,24 @@
 
 {% block content %}
 <div class="ui container">
-    <div class="ui five column doubling cards" id="content-menu"><!--  // ui four doubling cards -->
-        <!-- ko foreach: {data: $root, as: 'item'} -->
-        <div class="card">
-            <a href="page.html" class="image">
-{#                <img data-bind="attr: {src: item.img}">#}
-            </a>
-            <div class="content">
-                <a href="{% url 'main_article_show' 1 %}"
-                   class="header"
-                   style="font-size: 1.07142857rem;"
-                   data-bind="text: item.title"></a>
-                <div class="meta">
-                    Немного истории
+    <div class="ui five column doubling cards">
+
+        {% for section in sections_list %}
+            <div class="card">
+                <a href="{% url 'main_article_show' 1 %}" class="image">
+                    <img src="{{ section.photo }}">
+                </a>
+                <div class="content">
+                    <a href="{% url 'main_article_show' 1 %}" class="header" style="font-size: 1.07142857rem;">
+                        {{ section.title }}
+                    </a>
+                    <div class="meta">
+                        {{ section.created_at|date:"d E Y" }}
+                    </div>
                 </div>
-                <!--<div class="computer only row description">-->
-                    <!--Сложились в рамках рабовладельческого общества принципы демократии-->
-                <!--</div>-->
             </div>
-        </div>
-        <!-- /ko -->
+        {% endfor %}
+
     </div>
 </div>
-
-<script>
-    var CONTENT_MENU = [
-        {
-            title: 'Первобытное искусство',
-            img: 'http://900igr.net/datai/istorija/Iskusstvo-pervobytnogo-cheloveka/0002-007-Pervobytnoe-iskusstvo-iskusstvo-epokhi-pervobytnoobschinnogo-stroja.jpg',
-            url: ''
-        },
-        {
-            title: 'Искусство Древнего Египта',
-            img: 'http://www.ice-nut.ru/egypt/egypt07003.jpg',
-            url: ''
-        },
-        {
-            title: 'Античное искусство',
-            img: 'http://www.vokrugsveta.ru/img/bx/blog/e98/e981dbc26407ac3f9ac4d50618647468.jpg',
-            url: ''
-        },
-        {
-            title: 'Средневековое искусство',
-            img: 'http://paranormal-blog.ru/wp-content/uploads/2013/05/%D1%81%D1%80%D0%B5%D0%B4%D0%BD%D0%B5%D0%B2%D0%B5%D0%BA%D0%BE%D0%B2%D0%B0%D1%8F-%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0.jpg',
-            url: ''
-        },
-        {
-            title: 'Искусство эпохи Возрождения',
-            img: 'http://www.arthistory.ru/img/botichelli/rozhdenie_veneri_botticelli.jpg',
-            url: ''
-        },
-        {
-            title: 'Искусство XVII - первой половины XVIII века',
-            img: 'http://crossmoda.narod.ru/CONTENT/art/XVII/img_real/karavadjo_lutnist_1595.jpg',
-            url: ''
-        },
-        {
-            title: 'Искусство эпохи Просвещения',
-            img: 'http://egood.narod.ru/Bushe.jpg',
-            url: ''
-        },
-        {
-            title: 'Искусство романтизма',
-            img: 'http://kultprivet.ru/pictures/1734/%D0%9E%D0%B1%D1%80%D0%B0%D0%B7%D1%8B-%D1%80%D0%BE%D0%BC%D0%B0%D0%BD%D1%82%D0%B8%D0%B7%D0%BC%D0%B0.jpg',
-            url: ''
-        },
-        {
-            title: 'Критический реализм в искусстве первой половины XIX века',
-            img: 'http://dic.academic.ru/pictures/enc_pictures/i_558.jpg',
-            url: ''
-        },
-        {
-            title: 'Искусство Западной Европы 60—90-х гг. XIX-го века',
-            img: 'http://artyx.ru/books/item/f00/s00/z0000019/pic/000286.jpg',
-            url: ''
-        },
-        {
-            title: 'Русское искусство 60-х — начала 90-х гг. XIX века',
-            img: 'http://skillsup.ru/assets/images/photos/400/432-osnovnyie-napravleniya-izobrazitelnogo-iskusstva-xx-veka/01.jpg',
-            url: ''
-        },
-        {
-            title: 'Белорусское искусство 60—90-х гг. XIX века',
-            img: 'http://skillsup.ru/assets/images/photos/400/432-osnovnyie-napravleniya-izobrazitelnogo-iskusstva-xx-veka/01.jpg',
-            url: ''
-        },
-        {
-            title: 'Зарубежное искусство конца XIX — начала XX веков',
-            img: 'http://skillsup.ru/assets/images/photos/400/432-osnovnyie-napravleniya-izobrazitelnogo-iskusstva-xx-veka/01.jpg',
-            url: ''
-        },
-        {
-            title: 'Русское искусство конца XIX — начала XX веков',
-            img: 'http://skillsup.ru/assets/images/photos/400/432-osnovnyie-napravleniya-izobrazitelnogo-iskusstva-xx-veka/01.jpg',
-            url: ''
-        },
-        {
-            title: 'Искусство Беларуси конца XIX — начала XX веков',
-            img: 'http://skillsup.ru/assets/images/photos/400/432-osnovnyie-napravleniya-izobrazitelnogo-iskusstva-xx-veka/01.jpg',
-            url: ''
-        },
-        {
-            title: 'Искусство между мировыми войнами',
-            img: 'http://skillsup.ru/assets/images/photos/400/432-osnovnyie-napravleniya-izobrazitelnogo-iskusstva-xx-veka/01.jpg',
-            url: ''
-        },
-        {
-            title: 'Советское искусство в 20—30-е гг.',
-            img: 'http://skillsup.ru/assets/images/photos/400/432-osnovnyie-napravleniya-izobrazitelnogo-iskusstva-xx-veka/01.jpg',
-            url: ''
-        },
-        {
-            title: 'Искусство БССР в 20—30-е гг.',
-            img: 'http://skillsup.ru/assets/images/photos/400/432-osnovnyie-napravleniya-izobrazitelnogo-iskusstva-xx-veka/01.jpg',
-            url: ''
-        },
-        {
-            title: 'Искусство второй мировой войны',
-            img: 'http://skillsup.ru/assets/images/photos/400/432-osnovnyie-napravleniya-izobrazitelnogo-iskusstva-xx-veka/01.jpg',
-            url: ''
-        },
-        {
-            title: 'Советское искусство Великой Отечественной войны',
-            img: 'http://skillsup.ru/assets/images/photos/400/432-osnovnyie-napravleniya-izobrazitelnogo-iskusstva-xx-veka/01.jpg',
-            url: ''
-        },
-        {
-            title: 'Искусство Беларуси в годы Великой Отечественной войны',
-            img: 'http://skillsup.ru/assets/images/photos/400/432-osnovnyie-napravleniya-izobrazitelnogo-iskusstva-xx-veka/01.jpg',
-            url: ''
-        },
-        {
-            title: 'Зарубежное искусство второй половины XX века',
-            img: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ-9YAPL-IKCT4O5a2_ckUQMMwK6fizNr_Hk0tBstgGT8Lhghg62Q',
-            url: ''
-        },
-        {
-            title: 'Советское искусство второй половины ХХ века',
-            img: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTCC-PNyJG_nOrOP5v46i73uHiGGIsh2imBy9Vn962sGKBZjxgm',
-            url: ''
-        },
-        {
-            title: 'Искусство Беларуси второй половины XX века',
-            img: 'http://os.colta.ru/m/photo/2012/01/19/lenta3_5_1.jpg',
-            url: ''
-        },
-    ];
-
-    ko.applyBindings(CONTENT_MENU, document.getElementById('content-menu'));
-</script>
 {% endblock %}
