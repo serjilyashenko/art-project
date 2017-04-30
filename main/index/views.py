@@ -12,3 +12,11 @@ def home(request):
         .order_by('id')
 
     return render(request, 'home.html', locals())
+
+
+def sitemap(request):
+    sections = Section.objects.filter(parent=None) \
+        .prefetch_related('articles') \
+        .order_by('id')
+
+    return render(request, 'sitemap.html', locals())

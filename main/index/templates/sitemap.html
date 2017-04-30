@@ -1,0 +1,15 @@
+{% extends "layout/index.html" %}
+
+{% block content %}
+<div class="ui container">
+
+    <h1>Карта сайта</h1>
+
+    <ul>
+        {% for section in sections %}
+            {% include 'includes/sitemap_item.html' with section=section is_main=True %}
+        {% endfor %}
+    </ul>
+
+</div>
+{% endblock %}
