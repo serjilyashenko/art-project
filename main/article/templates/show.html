@@ -15,7 +15,9 @@
             </div>
 
             <div class="ui text art-content">
-                <h1 class="ui dividing header">{{ article.title }}</h1>
+                <h1 class="ui dividing header">
+                    {% firstof article.title section.title %}
+                </h1>
 
                 <div class="" style="margin: 0 0 20px;">
                     {{ article.text }}
