@@ -8,4 +8,4 @@ def show(request, article_id):
     article = get_object_or_404(Article, pk=article_id)
     section = article.section
 
-    return render(request, "show.html", locals())
+    return render(request, 'show.html', locals())

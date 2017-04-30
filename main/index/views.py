@@ -7,8 +7,8 @@ from main.section.models import Section
 
 def home(request):
     sections = Section.objects.filter(parent=None)\
-        .annotate(children_count=Count("children"))\
-        .prefetch_related("articles")\
-        .order_by("id")
+        .annotate(children_count=Count('children'))\
+        .prefetch_related('articles')\
+        .order_by('id')
 
     return render(request, 'home.html', locals())
