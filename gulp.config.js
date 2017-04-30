@@ -19,7 +19,6 @@ module.exports = (function () {
         ],
         appJavascript: [
             path.nodeModules + '/jquery/dist/jquery.js',
-            path.nodeModules + '/knockout/build/output/knockout-latest.js',
             path.semantic + '/semantic.js',
             path.sourceJavascript + '/app.js'
         ]

@@ -17,7 +17,6 @@
   "homepage": "https://github.com/Potseluiko/art-project#readme",
   "dependencies": {
     "jquery": "^3.2.1",
-    "knockout": "^3.4.2",
     "semantic-ui": "^2.2.10"
   },
   "devDependencies": {
