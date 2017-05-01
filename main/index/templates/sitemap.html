@@ -5,11 +5,11 @@
 
     <h1>Карта сайта</h1>
 
-    <ul>
+    <ol>
         {% for section in sections %}
             {% include 'includes/sitemap_item.html' with section=section is_main=True %}
         {% endfor %}
-    </ul>
+    </ol>
 
 </div>
 {% endblock %}

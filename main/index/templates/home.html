@@ -6,9 +6,16 @@
 
         {% for section in sections %}
             <div class="card">
-                <a href="{% url 'main_article_show' 1 %}" class="image">
-                    <img src="{{ section.photo }}">
-                </a>
+                {% if section.articles.all.0 %}
+                    <a href="{% url 'main_article_show' section.articles.all.0.id %}" class="image">
+                        <img src="{{ section.photo }}">
+                    </a>
+                {% else %}
+                    <span class="image">
+                        <img src="{{ section.photo }}">
+                    </span>
+                {% endif %}
+
                 <div class="content">
                     <div class="header" style="font-size: 1.07142857rem;">
                         {% if section.articles.all.0 %}
