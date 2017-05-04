@@ -7,12 +7,34 @@
         <div class="twelve wide column">
 
             <div class="ui breadcrumb">
-                <a class="section">Искусство романтизма</a>
+
+                <a href="{% url 'main_index_home' %}" class="section">Главная</a>
                 <span class="divider">/</span>
-                <a class="section">Романтизм в Западной Европе</a>
-                <span class="divider">/</span>
-                <div class="active section">Литература</div>
+
+{#                <a href="{% url 'main_article_show' section.parent.articles.all.0.id %}" class="section">{{ section.parent.title }}</a>#}
+{#                <span class="divider">/</span>#}
+
+                <div class="active section">{{ section.title }}</div>
             </div>
+
+            {% if section.children.all %}
+                <div style="margin: 30px 0 0;">
+                    <div>
+                        <b>Подразделы:</b>
+                    </div>
+                    <ul>
+                        {% for section in section.children.all %}
+                            <li>
+                                {% if section.articles.all.0 %}
+                                    <a href="{% url 'main_article_show' section.articles.all.0.id %}">{{ section.title }}</a>
+                                {% else %}
+                                    <span>{{ section.title }}</span>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
 
             <div class="ui text art-content">
                 <h1 class="ui dividing header">
