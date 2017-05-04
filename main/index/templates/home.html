@@ -1,4 +1,5 @@
 {% extends "layout/index.html" %}
+{% load static %}
 
 {% block content %}
 <div class="ui container">
@@ -8,11 +9,19 @@
             <div class="card">
                 {% if section.articles.all.0 %}
                     <a href="{% url 'main_article_show' section.articles.all.0.id %}" class="image">
-                        <img src="{{ section.photo }}">
+                        {% with section.id|stringformat:"s" as section_id %}
+                            {% with 'images/sections/section-'|add:section_id|add:'-200x200.jpg' as img_path %}
+                                 <img src="{% static img_path %}">
+                            {% endwith %}
+                        {% endwith %}
                     </a>
                 {% else %}
                     <span class="image">
-                        <img src="{{ section.photo }}">
+                        {% with section.id|stringformat:"s" as section_id %}
+                            {% with 'images/sections/section-'|add:section_id|add:'-200x200.jpg' as img_path %}
+                                 <img src="{% static img_path %}">
+                            {% endwith %}
+                        {% endwith %}
                     </span>
                 {% endif %}
 
