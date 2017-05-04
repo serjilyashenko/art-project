@@ -3,47 +3,106 @@
 
 {% block content %}
 <div class="ui container">
-    <div class="ui five column doubling cards">
+    <h1 class="ui centered header">
+        Мировая художественная культура<br>
+        и искусство
+    </h1>
 
-        {% for section in sections %}
-            <div class="card">
-                {% if section.articles.all.0 %}
-                    <a href="{% url 'main_article_show' section.articles.all.0.id %}" class="image">
-                        {% with section.id|stringformat:"s" as section_id %}
-                            {% with 'images/sections/section-'|add:section_id|add:'-200x200.jpg' as img_path %}
-                                 <img src="{% static img_path %}">
-                            {% endwith %}
-                        {% endwith %}
-                    </a>
-                {% else %}
-                    <span class="image">
-                        {% with section.id|stringformat:"s" as section_id %}
-                            {% with 'images/sections/section-'|add:section_id|add:'-200x200.jpg' as img_path %}
-                                 <img src="{% static img_path %}">
-                            {% endwith %}
-                        {% endwith %}
-                    </span>
-                {% endif %}
-
-                <div class="content">
-                    <div class="header" style="font-size: 1.07142857rem;">
-                        {% if section.articles.all.0 %}
-                            <a href="{% url 'main_article_show' section.articles.all.0.id %}">
-                                {{ section.title }}
-                            </a>
-                        {% else %}
-                            <span>
-                                {{ section.title }}
-                            </span>
-                        {% endif %}
-                    </div>
-                    <div class="meta">
-                        {{ section.children_count }} подразделов
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
-
+    <div>
+        <p>Молодежь нынче депрессивная — это вам любой наблюдательный человек скажет. По крайней мере, она так выглядит: ходит угрюмая и всем своим видом показывает распространяющуюся по тонким струнам души боль. Про Наташу Манчак вы можете не знать, но зато наверняка про нее слышал ваш сын-подросток: это она придумала надписи «Я могу объяснить» на одежде, которые каждый может дополнить самостоятельно. В рубрике «Поколение» говорим с молодым дизайнером про моду на депрессию, школьное хулиганство и кумиров из соцсетей.</p>
+        <p>Наташа — фешен-дизайнер, которая создала собственный бренд Manchak Apparel — марку унисекс-одежды, которую неистово «лайкает» молодежь в соцсетях. Надписи «Я могу объяснить» на черных футболках и толстовках можно дополнять самостоятельно словами вроде «ложь», «любовь», «похоть», «алчность». В общем, угрюмый подросток непременно заинтересуется.</p>
+        <p>— Я родилась в Минске. Училась тоже здесь — сначала в школе с углубленным изучением английского, потом в обычной общеобразовательной: мы переехали в другой район, и там было только одно учебное заведение. На всю огромную Лошицу и 2500 учеников, представляете? Получилось очень много классов, а образования как такового и не было.</p>
+        <p>Молодежь нынче депрессивная — это вам любой наблюдательный человек скажет. По крайней мере, она так выглядит: ходит угрюмая и всем своим видом показывает распространяющуюся по тонким струнам души боль. Про Наташу Манчак вы можете не знать, но зато наверняка про нее слышал ваш сын-подросток: это она придумала надписи «Я могу объяснить» на одежде, которые каждый может дополнить самостоятельно. В рубрике «Поколение» говорим с молодым дизайнером про моду на депрессию, школьное хулиганство и кумиров из соцсетей.</p>
     </div>
 </div>
+
+
+<div class="ui hidden divider" style="margin: 30px 0;"></div>
+
+<div class="ui doubling stackable four column grid container rt-tiles" id="content-menu">
+    {% for section in sections %}
+    <div class="column">
+
+        <div class="rt-tile">
+            {% if section.articles.all.0 %}
+                <a href="{% url 'main_article_show' section.articles.all.0.id %}" class="rt-tile__image">
+                    {% with section.id|stringformat:"s" as section_id %}
+                        {% with 'images/sections/section-'|add:section_id|add:'-200x200.jpg' as img_path %}
+                             <img src="{% static img_path %}" width="100%" height="auto">
+                        {% endwith %}
+                    {% endwith %}
+                </a>
+            {% else %}
+                <span class="rt-tile__image">
+                    {% with section.id|stringformat:"s" as section_id %}
+                        {% with 'images/sections/section-'|add:section_id|add:'-200x200.jpg' as img_path %}
+                             <img src="{% static img_path %}" width="100%" height="auto">
+                        {% endwith %}
+                    {% endwith %}
+                </span>
+            {% endif %}
+
+            <div class="rt-tile__content">
+                <div class="rt-tile__header">
+                    {% if section.articles.all.0 %}
+                        <a href="{% url 'main_article_show' section.articles.all.0.id %}">
+                            {{ section.title }}
+                        </a>
+                    {% else %}
+                        <span>
+                            {{ section.title }}
+                        </span>
+                    {% endif %}
+                </div>
+                <div class="rt-tile__description">
+                    {{ section.children_count }} подразделов
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {% endfor %}
+
+</div>
+
+<div class="ui hidden divider" style="margin: 30px 0;"></div>
+
+<div class="ui stackable three column grid container">
+    <div class="column">
+        <h2 class="ui center aligned icon header">
+            <i class="circular puzzle icon"></i>
+            Культура и искусство
+        </h2>
+        <div class="">
+            Молодежь нынче депрессивная. По крайней мере, она так выглядит:
+            ходит угрюмая и всем своим видом показывает распространяющуюся
+            по тонким струнам души боль.
+        </div>
+    </div>
+    <div class="column">
+        <h2 class="ui center aligned icon header">
+            <i class="circular student icon"></i>
+            Помогает в учебе
+        </h2>
+        <div class="">
+            Молодежь нынче депрессивная. По крайней мере, она так выглядит:
+            ходит угрюмая и всем своим видом показывает распространяющуюся
+            по тонким струнам души боль.
+        </div>
+    </div>
+    <div class="column">
+        <h2 class="ui center aligned icon header">
+            <i class="circular send icon"></i>
+            Поколение
+        </h2>
+        <div class="">
+            Молодежь нынче депрессивная. По крайней мере, она так выглядит:
+            ходит угрюмая и всем своим видом показывает распространяющуюся
+            по тонким струнам души боль.
+        </div>
+    </div>
+</div>
+
+<div class="ui hidden divider"></div>
+
 {% endblock %}
