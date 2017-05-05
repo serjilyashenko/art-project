@@ -20,3 +20,7 @@ def sitemap(request):
         .order_by('id')
 
     return render(request, 'sitemap.html', locals())
+
+
+def contacts(request):
+    return render(request, 'contacts.html', locals())
