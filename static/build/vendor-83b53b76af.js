@@ -32918,5 +32918,3 @@ $.fn.visibility.settings = {
 };
 
 })( jQuery, window, document );
-
-console.log('APP!');
