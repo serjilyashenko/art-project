@@ -1,20 +1,32 @@
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Lora', serif;
+  font-size: 16px;
 }
 
-.ui.segment.art-footer {
-  margin-top: 2em;
+.ui.header, .ui.menu {
+  font-family: 'Lora', serif;
 }
 
-.ui.segment.art-masthead {
+
+
+/* Header */
+.rt-header {
+
+}
+
+
+
+/* Masthead */
+.rt-masthead {
   margin-top: 0;
   margin-bottom: 2em;
-  padding: 0.5em;
+  position: relative;
+  text-align: center;
   background: center center url('../images/header-default-8.jpg') no-repeat;
   background-size: 100% auto;
 }
 
-.ui.segment.art-masthead:before {
+.rt-masthead:before {
   content: '';
   display: block;
   position: absolute;
@@ -22,40 +34,54 @@ body {
   right: 0;
   top: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(30, 80, 130, 0.8);
 }
 
-.ui.segment.art-masthead .art-text {
+.rt-masthead .rt-text {
   padding: 1.5em;
   color: #fff;
   position: relative;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.2);
+
 }
 
-.ui.segment.art-masthead .art-header {
+.rt-masthead .rt-header {
   font-size: 18px;
   font-weight: 700;
 }
 
-.ui.segment.art-masthead .art-description {
+.rt-masthead .rt-description {
 
 }
 
 
 
-/* content */
-.art-content {
-  padding: 2em 0 3em;
+/* Body */
+.rt-body {
+  min-height: calc(100% - 296px);
+}
+
+
+
+/* Footer */
+.rt-footer {
+  margin-top: 2em;
+}
+
+
+
+/* Main text */
+.rt-main-text {
   font-size: 16px;
 }
 
-/* art-s1 */
+
+
+/* Tiles */
 .rt-tiles {
 
 }
 
-.rt-tiles.ui.stackable.grid>.column {
+.rt-tiles .ui.stackable.grid > .column {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }
@@ -64,7 +90,7 @@ body {
   padding: 1em 0;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 1px 0 rgba(34,36,38,.15);
+  box-shadow: 0 1px 0 rgba(34, 36, 38, .15);
 }
 
 .rt-tile__image {
@@ -80,14 +106,13 @@ body {
   float: left;
 }
 
-
 .rt-tile__content {
   margin-left: 80px;
 }
 
 .rt-tile__header {
-  font-size: 13px;
-  line-height: 15px;
+  font-size: 16px;
+  line-height: 18px;
 }
 
 .rt-tile__header a {
@@ -100,3 +125,11 @@ body {
   line-height: 15px;
   color: #999;
 }
+
+
+
+/* Article */
+.rt-article {
+  padding: 2em 0 3em;
+}
+

@@ -8,17 +8,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>Искусство</title>
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
     <link rel="stylesheet" href="{% static_build 'app.css' %}">
     <script src="{% static_build 'app.js' %}"></script>
 </head>
 <body>
 
 {% include "layout/includes/header.html" %}
-{% include "layout/includes/intro.html" %}
+{% include "layout/includes/masthead.html" %}
 
-{% block content %}
+<div class="rt-body">
+    {% block content %}
 
-{% endblock %}
+    {% endblock %}
+</div>
 
 {% include "layout/includes/footer.html" %}
 

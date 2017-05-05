@@ -1,39 +1,30 @@
 {% load static %}
 
-<div class="ui container">
-    <div class="ui large secondary network menu">
-        <div class="item">
-            <div class="ui logo shape">
-                <div class="sides">
-                    <div class="active ui side">
-                        <a href="{% url 'main_index_home' %}">
-                            <img class="ui image" src="{% static 'images/logo.png' %}" style="width: 40px;">
-                        </a>
+<div class="rt-header">
+    <div class="ui container">
+        <div class="ui large secondary network menu">
+            <div class="item">
+                <div class="ui logo shape">
+                    <div class="sides">
+                        <div class="active ui side">
+                            <a href="{% url 'main_index_home' %}">
+                                <img class="ui image" src="{% static 'images/logo.png' %}" style="width: 40px;">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="item">
-            <div class="ui secondary pointing menu">
-                <a href="{% url 'main_index_home' %}" class="item teal active">
-                    Главная
-                </a>
-                <a href="#" class="item purple">
-                    О проекте
-                </a>
-                <a href="#" class="item pink">
-                    Контакты
-                </a>
-            </div>
-        </div>
-        <div class="right menu">
-            <div class="ui floating dropdown link item">
-                <i class="world icon"></i>
-                <div class="text">English</div>
-                <div class="menu hidden">
-                    <div class="item">English</div>
-                    <div class="item">Danish</div>
-                    <div class="item">Spanish</div>
+            <div class="item">
+                <div class="ui secondary pointing menu">
+                    <a href="{% url 'main_index_home' %}" class="item teal active">
+                        Главная
+                    </a>
+                    <a href="{% url 'main_index_home' %}#sections" class="item purple">
+                        Разделы
+                    </a>
+                    <a href="#" class="item pink">
+                        Контакты
+                    </a>
                 </div>
             </div>
         </div>

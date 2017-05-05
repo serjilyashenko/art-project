@@ -18,7 +18,7 @@
         <ul>
             {% for children in section.children.all %}
 
-                {% include 'includes/sitemap_item.html' with section=children is_main=False %}
+                {% include 'includes/sitemap-item.html' with section=children is_main=False %}
 
             {% endfor %}
         </ul>

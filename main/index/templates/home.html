@@ -3,106 +3,134 @@
 
 {% block content %}
 <div class="ui container">
-    <h1 class="ui centered header">
-        Мировая художественная культура<br>
-        и искусство
-    </h1>
+    <div class="rt-main-text" id="introduction">
+        <h1 class="ui centered header">
+            Мировая художественная культура<br>
+            и&nbsp;искусство
+        </h1>
 
-    <div>
-        <p>Молодежь нынче депрессивная — это вам любой наблюдательный человек скажет. По крайней мере, она так выглядит: ходит угрюмая и всем своим видом показывает распространяющуюся по тонким струнам души боль. Про Наташу Манчак вы можете не знать, но зато наверняка про нее слышал ваш сын-подросток: это она придумала надписи «Я могу объяснить» на одежде, которые каждый может дополнить самостоятельно. В рубрике «Поколение» говорим с молодым дизайнером про моду на депрессию, школьное хулиганство и кумиров из соцсетей.</p>
-        <p>Наташа — фешен-дизайнер, которая создала собственный бренд Manchak Apparel — марку унисекс-одежды, которую неистово «лайкает» молодежь в соцсетях. Надписи «Я могу объяснить» на черных футболках и толстовках можно дополнять самостоятельно словами вроде «ложь», «любовь», «похоть», «алчность». В общем, угрюмый подросток непременно заинтересуется.</p>
-        <p>— Я родилась в Минске. Училась тоже здесь — сначала в школе с углубленным изучением английского, потом в обычной общеобразовательной: мы переехали в другой район, и там было только одно учебное заведение. На всю огромную Лошицу и 2500 учеников, представляете? Получилось очень много классов, а образования как такового и не было.</p>
-        <p>Молодежь нынче депрессивная — это вам любой наблюдательный человек скажет. По крайней мере, она так выглядит: ходит угрюмая и всем своим видом показывает распространяющуюся по тонким струнам души боль. Про Наташу Манчак вы можете не знать, но зато наверняка про нее слышал ваш сын-подросток: это она придумала надписи «Я могу объяснить» на одежде, которые каждый может дополнить самостоятельно. В рубрике «Поколение» говорим с молодым дизайнером про моду на депрессию, школьное хулиганство и кумиров из соцсетей.</p>
+        <div>
+            <p><strong>Искусство</strong> сопровождает человека с самого момента его появления.
+                История мировой художественной культуры, как и история человеческого общества,
+                насчитывает сотни тысячелетий. Отражая реальность в художественных
+                образах, оно сопровождает человека и по сей день.</p>
+
+            <p><strong>Искусство</strong>, его называют также художественным творчеством, является выражением
+                духовной сущности человека, воплощением интеллектуального потенциала поколения.
+                Также его можно рассматривать как форму художественно-образного освоения мира.</p>
+
+            <p>В общей реке художественной культуры выделяются отдельные
+                виды искусства: литература, архитектура,
+                живопись, скульптура, графика, декоративно-прикладное искусство, музыка, танец, театр, кино.
+                Также к этому списку можно отнести и другие разновидности человеческой деятельности,
+                которые воплощают в себе художественные ценности.</p>
+
+            <p><strong>Произведение искусства</strong> (роман, стихотворение в литературе, храм,
+                дворец в архитектуре, картина в живописи и т.д.) &mdash; результат универсальной
+                творческой деятельности человека, воссоздающей в себе работу ума (иногда подсознания),
+                сердца (чувств) и рук или проявления художественного дара человека.
+                При изучении произведения искусства нужно учитывать время, когда оно было создано,
+                а также необходимо знать вид и жанр искусства, в котором оно выполнено.
+            </p>
+        </div>
     </div>
 </div>
 
+<div class="ui divider" style="margin: 2em 0;"></div>
 
-<div class="ui hidden divider" style="margin: 30px 0;"></div>
+<div class="ui container rt-tiles" id="sections">
+{#    <h2 class="ui centered header">#}
+{#        Разделы МХК#}
+{#        <div class="sub header">Материал изложен по временной вертикали</div>#}
+{#    </h2>#}
+    <div class="ui doubling stackable three column grid">
+        {% for section in sections %}
+        <div class="column">
 
-<div class="ui doubling stackable four column grid container rt-tiles" id="content-menu">
-    {% for section in sections %}
-    <div class="column">
-
-        <div class="rt-tile">
-            {% if section.articles.all.0 %}
-                <a href="{% url 'main_article_show' section.articles.all.0.id %}" class="rt-tile__image">
-                    {% with section.id|stringformat:"s" as section_id %}
-                        {% with 'images/sections/section-'|add:section_id|add:'-200x200.jpg' as img_path %}
-                             <img src="{% static img_path %}" width="100%" height="auto">
+            <div class="rt-tile">
+                {% if section.articles.all.0 %}
+                    <a href="{% url 'main_article_show' section.articles.all.0.id %}" class="rt-tile__image">
+                        {% with section.id|stringformat:"s" as section_id %}
+                            {% with 'images/sections/section-'|add:section_id|add:'-200x200.jpg' as img_path %}
+                                 <img src="{% static img_path %}" width="100%" height="auto">
+                            {% endwith %}
                         {% endwith %}
-                    {% endwith %}
-                </a>
-            {% else %}
-                <span class="rt-tile__image">
-                    {% with section.id|stringformat:"s" as section_id %}
-                        {% with 'images/sections/section-'|add:section_id|add:'-200x200.jpg' as img_path %}
-                             <img src="{% static img_path %}" width="100%" height="auto">
+                    </a>
+                {% else %}
+                    <span class="rt-tile__image">
+                        {% with section.id|stringformat:"s" as section_id %}
+                            {% with 'images/sections/section-'|add:section_id|add:'-200x200.jpg' as img_path %}
+                                 <img src="{% static img_path %}" width="100%" height="auto">
+                            {% endwith %}
                         {% endwith %}
-                    {% endwith %}
-                </span>
-            {% endif %}
+                    </span>
+                {% endif %}
 
-            <div class="rt-tile__content">
-                <div class="rt-tile__header">
-                    {% if section.articles.all.0 %}
-                        <a href="{% url 'main_article_show' section.articles.all.0.id %}">
-                            {{ section.title }}
-                        </a>
-                    {% else %}
-                        <span>
-                            {{ section.title }}
-                        </span>
-                    {% endif %}
-                </div>
-                <div class="rt-tile__description">
-                    {{ section.children_count }} подразделов
+                <div class="rt-tile__content">
+                    <div class="rt-tile__header">
+                        {% if section.articles.all.0 %}
+                            <a href="{% url 'main_article_show' section.articles.all.0.id %}">
+                                {{ section.title }}
+                            </a>
+                        {% else %}
+                            <span>
+                                {{ section.title }}
+                            </span>
+                        {% endif %}
+                    </div>
+                    <div class="rt-tile__description">
+                        {{ section.children_count }} подразделов
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </div>
-    {% endfor %}
-
-</div>
-
-<div class="ui hidden divider" style="margin: 30px 0;"></div>
-
-<div class="ui stackable three column grid container">
-    <div class="column">
-        <h2 class="ui center aligned icon header">
-            <i class="circular puzzle icon"></i>
-            Культура и искусство
-        </h2>
-        <div class="">
-            Молодежь нынче депрессивная. По крайней мере, она так выглядит:
-            ходит угрюмая и всем своим видом показывает распространяющуюся
-            по тонким струнам души боль.
         </div>
-    </div>
-    <div class="column">
-        <h2 class="ui center aligned icon header">
-            <i class="circular student icon"></i>
-            Помогает в учебе
-        </h2>
-        <div class="">
-            Молодежь нынче депрессивная. По крайней мере, она так выглядит:
-            ходит угрюмая и всем своим видом показывает распространяющуюся
-            по тонким струнам души боль.
-        </div>
-    </div>
-    <div class="column">
-        <h2 class="ui center aligned icon header">
-            <i class="circular send icon"></i>
-            Поколение
-        </h2>
-        <div class="">
-            Молодежь нынче депрессивная. По крайней мере, она так выглядит:
-            ходит угрюмая и всем своим видом показывает распространяющуюся
-            по тонким струнам души боль.
-        </div>
+        {% endfor %}
     </div>
 </div>
 
-<div class="ui hidden divider"></div>
+<div class="ui hidden divider" style="margin: 2em 0;"></div>
+
+<div class="ui container">
+    <div class="ui stackable three column grid">
+        <div class="column">
+            <h2 class="ui center aligned icon header">
+                <i class="circular comments icon"></i>
+                О проекте
+            </h2>
+            <div>
+                Перед вами информационный материал по&nbsp;истории мировой художественной культуры.
+                Основная цель составителя &mdash; сэкономить время читателя,
+                избавить его от&nbsp;трудоемкого поиска информации.
+                Главное &mdash; оставить след в&nbsp;сознании и&nbsp;сердце посетителя.
+            </div>
+        </div>
+        <div class="column">
+            <h2 class="ui center aligned icon header">
+                <i class="circular user icon"></i>
+                Авторство
+            </h2>
+            <div>
+                Данный материал разработан одним из&nbsp;лучших учителей
+                ГУО &laquo;Гимназия им.&nbsp;Я.Купалы&raquo; г.&nbsp;Мозыря &mdash;
+                Филимоновой Светланой Васильевной.
+                Ее&nbsp;задача &mdash; не&nbsp;количество, а&nbsp;качество материала, метод его преподнесения.
+            </div>
+        </div>
+        <div class="column">
+            <h2 class="ui center aligned icon header">
+                <i class="circular mail icon"></i>
+                Контакты
+            </h2>
+            <div>
+                Надеюсь, этот сайт поможет вам в&nbsp;изучении важной и&nbsp;нужной дисциплины&nbsp;&mdash;
+                истории мировой художественной культуры.
+                <!--Над сайтом постоянно ведется работа по&nbsp;наполнению его текстовым и&nbsp;графическим материалом.-->
+                Если у&nbsp;вас есть вопросы или предложения, можете отправлять
+                их&nbsp;на&nbsp;<nobr>e-mail</nobr> <a href="mailto:a.potseluiko@gmail.com">a.potseluiko@gmail.com</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
