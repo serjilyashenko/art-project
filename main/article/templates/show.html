@@ -40,7 +40,7 @@
                 </div>
             {% endif %}
 
-            <div class="ui text art-content">
+            <div class="ui text rt-article">
                 <h1 class="ui dividing header">
                     {% firstof article.title section.title %}
                 </h1>
@@ -60,35 +60,34 @@
 
             </div>
 
-
-            <div class="ui message">
-                <div class="ui header">Реклама</div>
-                <ul class="list">
-                    <li>Мебель для вашей <a href="#">ванной комнаты</a> по хорошим ценам</li>
-                    <li>Не пропусти скидки <a href="#">в магазине художественных товаров</a>! Лучшие предложения!</li>
-                </ul>
-            </div>
+{#            <div class="ui message">#}
+{#                <div class="ui header">Реклама</div>#}
+{#                <ul class="list">#}
+{#                    <li>Мебель для вашей <a href="#">ванной комнаты</a> по хорошим ценам</li>#}
+{#                    <li>Не пропусти скидки <a href="#">в магазине художественных товаров</a>! Лучшие предложения!</li>#}
+{#                </ul>#}
+{#            </div>#}
 
         </div>
 
         <div class="four wide right floated column">
 
-            <div class="ui segment">
-                <div class="ui header">Есть предложения?</div>
-                <p>
-                    Вы можете написать нам:<br>
-                    <i class="mail icon"></i>
-                    <a href="{% url 'main_index_contacts' %}">
-                        Контакты
-                    </a>
-                </p>
-            </div>
+{#            <div class="ui segment">#}
+{#                <div class="ui header">Есть предложения?</div>#}
+{#                <p>#}
+{#                    Вы можете написать нам:<br>#}
+{#                    <i class="mail icon"></i>#}
+{#                    <a href="{% url 'main_index_contacts' %}">#}
+{#                        Контакты#}
+{#                    </a>#}
+{#                </p>#}
+{#            </div>#}
 
-            <div class="ui vertical ad">
-                <a href="#">
-                    <img src="{% static 'images/ad.png' %}">
-                </a>
-            </div>
+{#            <div class="ui vertical ad">#}
+{#                <a href="#">#}
+{#                    <img src="{% static 'images/ad.png' %}">#}
+{#                </a>#}
+{#            </div>#}
 
         </div>
     </div>
