@@ -13,13 +13,17 @@ module.exports = (function () {
             'assets.json',
             './static/build/*.{js,css}'
         ],
+        vendorStyles: [
+            path.semantic + '/semantic.css'
+        ],
         appStyles: [
-            path.semantic + '/semantic.css',
             path.sourceStyles + '/app.less'
         ],
-        appJavascript: [
+        vendorJavascript: [
             path.nodeModules + '/jquery/dist/jquery.js',
-            path.semantic + '/semantic.js',
+            path.semantic + '/semantic.js'
+        ],
+        appJavascript: [
             path.sourceJavascript + '/app.js'
         ]
     };

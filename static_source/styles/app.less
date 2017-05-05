@@ -22,8 +22,8 @@ body {
   margin-bottom: 2em;
   position: relative;
   text-align: center;
-  background: center center url('../images/header-default-8.jpg') no-repeat;
-  background-size: 100% auto;
+  background: center top url('../images/header-default.jpg') no-repeat;
+  background-size: cover;
 }
 
 .rt-masthead:before {
@@ -41,6 +41,8 @@ body {
   padding: 1.5em;
   color: #fff;
   position: relative;
+  opacity: 0.9;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 1);
 
 }
 
@@ -57,7 +59,7 @@ body {
 
 /* Body */
 .rt-body {
-  min-height: calc(100% - 296px);
+  min-height: ~'calc(100% - 348px)';
 }
 
 

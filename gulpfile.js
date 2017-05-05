@@ -15,12 +15,28 @@ gulp.task('clean', function () {
         .pipe(clean());
 });
 
+gulp.task('styles:vendor', function () {
+    return runStyles(config.vendorStyles, 'vendor.css', false);
+});
+
+gulp.task('styles:vendor:build', function () {
+    return runStyles(config.vendorStyles, 'vendor.css', true);
+});
+
 gulp.task('styles:app', function () {
     return runStyles(config.appStyles, 'app.css', false);
 });
 
 gulp.task('styles:app:build', function () {
     return runStyles(config.appStyles, 'app.css', true);
+});
+
+gulp.task('scripts:vendor', function () {
+    return runScripts(config.vendorJavascript, 'vendor.js', false);
+});
+
+gulp.task('scripts:vendor:build', function () {
+    return runScripts(config.vendorJavascript, 'vendor.js', true);
 });
 
 gulp.task('scripts:app', function () {
@@ -34,12 +50,12 @@ gulp.task('scripts:app:build', function () {
 
 // with minification
 gulp.task('build', function () {
-    runSequence('clean', 'styles:app:build', 'scripts:app:build');
+    runSequence('clean', 'styles:vendor:build', 'styles:app:build', 'scripts:vendor:build', 'scripts:app:build');
 });
 
 // without minification
 gulp.task('default', function () {
-    runSequence('clean', 'styles:app', 'scripts:app');
+    runSequence('clean', 'styles:vendor', 'styles:app', 'scripts:vendor', 'scripts:app');
 });
 
 
