@@ -56,19 +56,13 @@
         <div class="column">
 
             <div class="rt-tile">
-                <a href="{% url 'main_article_show' section.article.id %}" class="rt-tile__image">
-                    {% with section.id|stringformat:"s" as section_id %}
-                        {% with 'images/sections/section-'|add:section_id|add:'-200x200.jpg' as img_path %}
-                             <img src="{% static img_path %}" width="100%" height="auto">
-                        {% endwith %}
-                    {% endwith %}
+                <a href="{{ section.get_absolute_url }}" class="rt-tile__image">
+                     <img src="{% static section.get_img %}" width="100%" height="auto">
                 </a>
 
                 <div class="rt-tile__content">
                     <div class="rt-tile__header">
-                        <a href="{% url 'main_article_show' section.article.id %}">
-                            {{ section.title }}
-                        </a>
+                        {{ section.get_link|safe }}
                     </div>
                     <div class="rt-tile__description">
                         {{ section.children_count|wp:"подраздел,,а,ов" }}

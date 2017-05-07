@@ -21,6 +21,7 @@ def home(request):
 def sitemap(request):
     sections = Section.objects.filter(parent=None) \
         .prefetch_related('articles') \
+        .exclude(articles=None) \
         .order_by('id')
 
     return render(request, 'sitemap.html', locals())

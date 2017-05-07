@@ -1,27 +1,17 @@
 <li {% if is_main %}style="margin: 0 0 30px;"{% endif %}>
 
     <div {% if is_main %}style="font-weight: bold;"{% endif %}>
-        {% if section.articles.all.0 %}
-            <a href="{% url 'main_article_show' section.articles.all.0.id %}">
-                {{ section.title }}
-            </a>
-        {% else %}
-            {{ section.title }}
-        {% endif %}
-
-        <span style="color: #999; font-size: 11px;">
-            (id: {{ section.id }})
-        </span>
+        {{ section.get_link|safe }}
+{#        <span style="color: #999; font-size: 11px;">#}
+{#            (id: {{ section.id }})#}
+{#        </span>#}
     </div>
 
     {% if section.children.all %}
         <ul>
             {% for children in section.children.all %}
-
                 {% include 'includes/sitemap-item.html' with section=children is_main=False %}
-
             {% endfor %}
         </ul>
     {% endif %}
 </li>
-
