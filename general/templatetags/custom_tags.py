@@ -1,6 +1,8 @@
+# ~*~ coding: utf-8 ~*~
 from __future__ import unicode_literals
 
 import os
+from django.contrib.humanize.templatetags.humanize import intcomma
 from django.contrib.staticfiles.templatetags.staticfiles import StaticFilesNode
 from django.template.base import Token
 from django import template
@@ -21,3 +23,27 @@ def do_static_build(parser, token):
     new_token = Token(token_type=token.token_type, contents=contents)
 
     return StaticFilesNode.handle_token(parser, new_token)
+
+
+@register.filter
+def p(value, arg):
+    args_array = arg.split(',')
+    base = '' if len(args_array) == 3 else args_array.pop(0)
+    number = abs(int(value))
+    a = number % 10
+    b = number % 100
+    try:
+        if (a == 1) and (b != 11):
+            return base + args_array[0]
+        elif 2 <= a <= 4 and (b < 10 or b >= 20):
+            return base + args_array[1]
+        else:
+            return base + args_array[2]
+    except:
+        return base
+
+
+@register.filter
+def wp(value, args_string):
+    string = intcomma(value) if value else 'нет'
+    return string + ' ' + p(value, args_string)

@@ -1,5 +1,6 @@
 {% extends "layout/index.html" %}
 {% load static %}
+{% load custom_tags %}
 
 {% block title %}
     История мировой художественной культуры
@@ -43,47 +44,34 @@
 <div class="ui divider" style="margin: 2em 0;"></div>
 
 <div class="ui container rt-tiles" id="sections">
-{#    <h2 class="ui centered header">#}
-{#        Разделы МХК#}
-{#        <div class="sub header">Материал изложен по временной вертикали</div>#}
-{#    </h2>#}
+    <h2 class="ui centered header">
+        Разделы МХК
+        <div class="sub header">Материал изложен по временной вертикали</div>
+    </h2>
+
+    <br><br>
+
     <div class="ui doubling stackable three column grid">
         {% for section in sections %}
         <div class="column">
 
             <div class="rt-tile">
-                {% if section.articles.all.0 %}
-                    <a href="{% url 'main_article_show' section.articles.all.0.id %}" class="rt-tile__image">
-                        {% with section.id|stringformat:"s" as section_id %}
-                            {% with 'images/sections/section-'|add:section_id|add:'-200x200.jpg' as img_path %}
-                                 <img src="{% static img_path %}" width="100%" height="auto">
-                            {% endwith %}
+                <a href="{% url 'main_article_show' section.article.id %}" class="rt-tile__image">
+                    {% with section.id|stringformat:"s" as section_id %}
+                        {% with 'images/sections/section-'|add:section_id|add:'-200x200.jpg' as img_path %}
+                             <img src="{% static img_path %}" width="100%" height="auto">
                         {% endwith %}
-                    </a>
-                {% else %}
-                    <span class="rt-tile__image">
-                        {% with section.id|stringformat:"s" as section_id %}
-                            {% with 'images/sections/section-'|add:section_id|add:'-200x200.jpg' as img_path %}
-                                 <img src="{% static img_path %}" width="100%" height="auto">
-                            {% endwith %}
-                        {% endwith %}
-                    </span>
-                {% endif %}
+                    {% endwith %}
+                </a>
 
                 <div class="rt-tile__content">
                     <div class="rt-tile__header">
-                        {% if section.articles.all.0 %}
-                            <a href="{% url 'main_article_show' section.articles.all.0.id %}">
-                                {{ section.title }}
-                            </a>
-                        {% else %}
-                            <span>
-                                {{ section.title }}
-                            </span>
-                        {% endif %}
+                        <a href="{% url 'main_article_show' section.article.id %}">
+                            {{ section.title }}
+                        </a>
                     </div>
                     <div class="rt-tile__description">
-                        {{ section.children_count }} подразделов
+                        {{ section.children_count|wp:"подраздел,,а,ов" }}
                     </div>
                 </div>
             </div>
