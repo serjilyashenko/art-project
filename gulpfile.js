@@ -50,12 +50,14 @@ gulp.task('scripts:app:build', function () {
 
 // with minification
 gulp.task('build', function () {
-    runSequence('clean', 'styles:vendor:build', 'styles:app:build', 'scripts:vendor:build', 'scripts:app:build');
+    // runSequence('clean', 'styles:vendor:build', 'styles:app:build', 'scripts:vendor:build', 'scripts:app:build');
+    runSequence('clean', 'styles:vendor:build', 'styles:app:build');
 });
 
 // without minification
 gulp.task('default', function () {
-    runSequence('clean', 'styles:vendor', 'styles:app', 'scripts:vendor', 'scripts:app');
+    // runSequence('clean', 'styles:vendor', 'styles:app', 'scripts:vendor', 'scripts:app');
+    runSequence('clean', 'styles:vendor', 'styles:app');
 });
 
 
