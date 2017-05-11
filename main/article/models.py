@@ -12,3 +12,6 @@ class Article(AppModel):
 
     class Meta:
         db_table = 'site_article'
+
+    def get_img_path(self):
+        return u'images/articles/%s/' % self.id

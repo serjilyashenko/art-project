@@ -1,0 +1,10 @@
+{% load static %}
+
+<figure class="rt-article__image-figure">
+    <a href="{% static article.get_img_path %}{{ img }}" target="_blank">
+        <img src="{% static article.get_img_path %}{% firstof small_img img %}"
+             height="{%  firstof height '200' %}"
+             alt="{{ title }}">
+    </a>
+    <figcaption>{{ title }}</figcaption>
+</figure>
