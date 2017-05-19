@@ -119,6 +119,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
+# path for hoster.by hosting
+STATIC_ROOT = '/home/art24inf/public_html/static/'
+
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(HOME, 'static'),
