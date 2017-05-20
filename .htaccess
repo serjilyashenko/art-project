@@ -1,0 +1,17 @@
+# Было на хостинге (файл /home/art24inf/public_html/.htaccess)
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home/art24inf/art_project"
+PassengerBaseURI "/"
+PassengerPython "/home/art24inf/virtualenv/art__project/2.7/bin/python2.7"
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
+
+#Force non-www (except robots.txt):
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !robots\.txt
+RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+#Raplace / in the end
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} (.+)/$
+RewriteRule ^ %1 [R=301,L]
