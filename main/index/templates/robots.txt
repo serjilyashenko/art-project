@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /admin
+Allow: *
+Crawl-delay: 30
+
+
+User-agent: Yandex
+Disallow: /admin
+Allow: *
+Crawl-Delay: 25
+Host: art24.info
