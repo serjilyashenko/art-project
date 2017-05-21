@@ -1,4 +1,6 @@
 import os
+from general.constants import HOST, IS_LOCAL
+from general.production_constants import DATABASE_PASSWORD
 
 
 HOME = os.path.dirname(__file__)
@@ -14,9 +16,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'mdpmmi2uq!+cr&5*(^@j$#vejaexf0_n80gprxm6=y2r98981y'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = HOST.endswith(':8000')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.art24.info', '.art24.my']
 
 
 # Application definition
@@ -76,9 +78,11 @@ WSGI_APPLICATION = 'wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'art_project',
-        'USER': 'root',
-        'PASSWORD': 'pass',
+        'NAME': 'art_project' if IS_LOCAL else 'art24inf_db',
+        'USER': 'root' if IS_LOCAL else 'art24inf_user',
+        'PASSWORD': 'pass' if IS_LOCAL else DATABASE_PASSWORD,
+        'HOST': '' if IS_LOCAL else 'localhost',
+        'PORT': '' if IS_LOCAL else '3306',
     }
 }
 
@@ -120,7 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 # path for hoster.by hosting
-STATIC_ROOT = '/home/art24inf/public_html/static/'
+STATIC_ROOT = '' if IS_LOCAL else '/home/art24inf/public_html/static/'
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (

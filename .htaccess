@@ -13,5 +13,6 @@ RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 
 #Raplace / in the end
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !/admin
 RewriteCond %{REQUEST_URI} (.+)/$
 RewriteRule ^ %1 [R=301,L]
