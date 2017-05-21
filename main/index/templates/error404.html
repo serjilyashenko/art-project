@@ -1,0 +1,21 @@
+{% extends "layout/index.html" %}
+{% load static %}
+{% load custom_tags %}
+
+{% block title %}
+    Страница не найдена
+{% endblock %}
+
+{% block content %}
+<div class="ui center aligned container">
+    <h1 class="ui icon header">
+        <i class="heartbeat icon"></i>
+        <div class="content">
+            404
+            <div class="sub header">Страница не найдена</div>
+        </div>
+    </h1>
+
+    {% include 'includes/error-page-text.html' %}
+</div>
+{% endblock %}

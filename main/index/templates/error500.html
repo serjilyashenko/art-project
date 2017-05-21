@@ -1,0 +1,21 @@
+{% extends "layout/index.html" %}
+{% load static %}
+{% load custom_tags %}
+
+{% block title %}
+    Внутренняя ошибка сервера
+{% endblock %}
+
+{% block content %}
+<div class="ui center aligned container">
+    <h1 class="ui icon header">
+        <i class="handicap icon"></i>
+        <div class="content">
+            500
+            <div class="sub header">Внутренняя ошибка сервера</div>
+        </div>
+    </h1>
+
+    {% include 'includes/error-page-text.html' %}
+</div>
+{% endblock %}

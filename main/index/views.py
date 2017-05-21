@@ -29,3 +29,11 @@ def sitemap(request):
 
 def contacts(request):
     return render(request, 'contacts.html', locals())
+
+
+def page404(request):
+    return render(request, 'error404.html', status=404)
+
+
+def page500(request):
+    return render(request, 'error500.html', status=500)
