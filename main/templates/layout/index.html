@@ -17,19 +17,20 @@
     <link rel="stylesheet" href="{% static_build 'vendor.css' %}">
     <link rel="stylesheet" href="{% static_build 'app.css' %}">
     {% include "layout/includes/ga.html" %}
+    {% include "layout/includes/adsense.html" %}
 </head>
 <body>
 
-{% include "layout/includes/header.html" %}
-{% include "layout/includes/masthead.html" %}
+    {% include "layout/includes/header.html" %}
+    {% include "layout/includes/masthead.html" %}
 
-<div class="rt-body">
-    {% block content %}
+    <div class="rt-body">
+        {% block content %}
 
-    {% endblock %}
-</div>
+        {% endblock %}
+    </div>
 
-{% include "layout/includes/footer.html" %}
+    {% include "layout/includes/footer.html" %}
 
 </body>
 </html>
